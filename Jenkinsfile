@@ -25,7 +25,7 @@ node('linux') {
      wrap([$class: 'TimestamperBuildWrapper']) {
         currentBuild.result = "SUCCESS"
         properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')), disableConcurrentBuilds(), \
-        [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/ScarlettGatelyClark/kontact.git'], pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
+        [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/ScarlettGatelyClark/kde-kf5-dependencies-artifact.git'], pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
 
         try {
 
@@ -33,8 +33,6 @@ node('linux') {
                 checkout scm
                 checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, \
                 extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'appimage-template']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/sysadmin/appimage-tooling']]]
-                checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, \
-                extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'kmail']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/kmail']]]
             }
             stage( 'Setup' ) {
                 sh 'echo "gem: --no-rdoc --no-ri" >> /var/lib/jenkins/.gemrc'
