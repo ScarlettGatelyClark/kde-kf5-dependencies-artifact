@@ -3,6 +3,7 @@ binary: kf5deps
 packages:
   - libqrencode-dev
   - fftw-dev
+  - libfftw3-dev
 frameworks:
   build_kf5: true
   frameworks:
