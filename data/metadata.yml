@@ -55,6 +55,8 @@ frameworks:
     - kdecoration
     - breeze
     - kactivities
+    - kirigami
+    - kwayland
     - plasma-framework
     - threadweaver
     - krunner
