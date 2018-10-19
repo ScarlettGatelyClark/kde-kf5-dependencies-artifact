@@ -30,13 +30,13 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
 end
 setup_path = `pwd`
 p setup_path
-project = 'kmail'
+project = 'kde-kf5-dependencies-artifact'
 builder = CI.new
 unless Dir.exist?('app')
   Dir.mkdir('app')
 end
-unless Dir.exist?('artifact')
-  Dir.mkdir('artifact')
+unless Dir.exist?('artifacts')
+  Dir.mkdir('artifacts')
 end
 builder.run = [CI::Build.new(project)]
 builder.cmd = %w[bash -c /in/setup.sh]
