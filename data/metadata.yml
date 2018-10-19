@@ -6,6 +6,7 @@ packages:
   - libfftw3-dev
   - libgegl-dev
   - libegl1-mesa-drivers
+  - libegl1-mesa-dev
 frameworks:
   build_kf5: true
   frameworks:
