@@ -48,7 +48,7 @@ node('linux') {
                        eval "$(rbenv init -)"
                        rbenv local 2.4.1 && gem install bundler && ls -l && bundle install --binstubs && bundle show rspec
                    else
-                       echo "Rbenv exists, moving on"                       
+                       echo "Rbenv exists, moving on"
                        if [[ ! -d /var/lib/jenkins/.rbenv/versions/2.4.1 ]] ; then
                         rbenv install 2.4.1
                        fi
@@ -56,7 +56,7 @@ node('linux') {
                        rbenv local 2.4.1 && gem install bundler && ls -l && bundle install --binstubs && bundle show rspec
                        bundle install
                    fi
-                   
+
                 '''
                 def WORKSPACE=pwd()
             }
@@ -73,6 +73,11 @@ node('linux') {
                 sh 'find . -type f -exec file {} \\; | grep "not stripped"'
                 step([$class: 'LogParserPublisher', failBuildOnError: true, projectRulePath: 'appimage-template/parser.rules', showGraphs: true, unstableOnWarning: true, useProjectRule: true])
             }
+
+            stage "Archive build output"
+
+              // Archive the build output artifacts.
+              archiveArtifacts artifacts: 'artifacts/*.gz'
         }
 
         catch (err) {
