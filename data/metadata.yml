@@ -4,6 +4,7 @@ packages:
 frameworks:
   build_kf5: true
   frameworks:
+    - polkit-qt-1
     - extra-cmake-modules
     - kcoreaddons
     - ki18n
