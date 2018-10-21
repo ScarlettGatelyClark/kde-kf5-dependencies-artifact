@@ -49,7 +49,6 @@ frameworks:
     - kpackage
     - kdeclarative
     - kcmutils
-    - kldap
     - kdecoration
     - breeze
     - kactivities
