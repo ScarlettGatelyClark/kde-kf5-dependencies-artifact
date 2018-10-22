@@ -70,7 +70,6 @@ node('linux') {
                     '''
             }
             stage('Tests') {
-                sh 'find . -type f -exec file {} \\; | grep "not stripped"'
                 step([$class: 'LogParserPublisher', failBuildOnError: true, projectRulePath: 'appimage-template/parser.rules', showGraphs: true, unstableOnWarning: true, useProjectRule: true])
             }
 
